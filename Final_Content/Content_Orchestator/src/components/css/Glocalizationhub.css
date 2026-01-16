@@ -1,0 +1,415 @@
+
+/* ===== Theme tokens (scoped soft palette) ===== */
+:root {
+    --gh-bg: #f7f8fb;
+    --gh-surface: #ffffff;
+    --gh-surface-soft: #fbfcff;
+  
+    --gh-text-strong: #0f172a;  /* slate-900 */
+    --gh-text: #1f2937;         /* slate-800 */
+    --gh-text-muted: #6b7280;   /* slate-500 */
+  
+    --gh-border: #e7edf5;
+    --gh-border-soft: #eef2f7;
+  
+    --gh-primary: #2563eb;      /* blue-600 */
+    --gh-primary-50: #eff6ff;
+  
+    --gh-teal: #2bb29c;         /* for png/email chip look */
+    --gh-success: #16a34a;
+    --gh-success-50: #ecfdf5;
+  
+    --gh-shadow-1: 0 1px 2px rgba(16, 24, 40, 0.06);
+    --gh-shadow-2: 0 4px 12px rgba(16, 24, 40, 0.08);
+    --gh-radius: 16px;
+    --gh-radius-sm: 10px;
+  
+    --gh-space-2: 8px;
+    --gh-space-3: 12px;
+    --gh-space-4: 16px;
+    --gh-space-5: 20px;
+    --gh-space-6: 24px;
+  }
+  
+  /* ===== Page wrapper ===== */
+  .glocal-hub {
+    max-width: 1298px;
+    margin: 0 auto;
+    padding: var(--gh-space-6);
+    background: var(--gh-bg);
+  }
+  
+ 
+/* Top bar: one horizontal row with left block + right actions */
+.gh-topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* aligns the left and right groups on same line */
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+  
+  /* Left block: arrow + title + subtitle arranged neatly */
+  .gh-titlegroup {
+    display: grid;
+    grid-template-columns: auto 1fr; /* arrow | title+subtitle */
+    grid-template-rows: auto auto;   /* title row, subtitle row */
+    align-items: center;
+    column-gap: 12px;
+    row-gap: 4px;
+  }
+  
+  /* Arrow sits in the first column, vertically centered with the title/subtitle stack */
+  .gh-titlegroup .MuiButton-root,
+  .gh-titlegroup .shrink-0 {
+    grid-column: 1 / 2;
+    grid-row: 1 / 3;             /* span both rows (title + subtitle) */
+    align-self: center;          /* brings the arrow "down" to center height */
+    justify-self: start;
+    padding: 6px;                /* compact */
+    border-radius: 8px;
+  }
+  
+  /* Title and subtitle stack in the second column */
+  .gh-titlegroup .gh-title {
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+    margin: 0;
+    font-size: 22px;
+    font-weight: 700;
+    color: #0f172a;
+  }
+  .gh-titlegroup .gh-subtitle {
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+    margin: 0;
+    font-size: 14px;
+    color: #6b7280;
+  }
+  
+  /* Right-side actions inline on the same line */
+  .gh-actions {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+  }
+  
+  /* Button styles for parity with screenshot */
+  .gh-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 14px;
+    border-radius: 12px;
+    font-size: 14px;
+    border: 1px solid #e7edf5;
+    background: #fff;
+    color: #0f172a;
+    cursor: pointer;
+  }
+  .gh-btn--ghost:hover { background: #f8fafc; }
+  .gh-btn--primary {
+    background: #2563eb;
+    color: #fff;
+    border-color: #2563eb;
+  }
+  .gh-btn--primary:hover { background: #1d4ed8; }
+  
+  /* Optional: compact icon sizes in actions */
+  .gh-actions .MuiSvgIcon-root { font-size: 18px; }
+  
+  /* Optional: make the arrow button look like a ghost icon button */
+  .gh-titlegroup .MuiButton-root[variant="ghost"],
+  .gh-titlegroup .MuiButton-root.ghost {
+    background: transparent;
+    border: 1px solid #e7edf5;
+  }
+  .gh-titlegroup .MuiButton-root:hover {
+    background: #f8fafc;
+  }
+  
+ 
+  
+  
+  /* ===== Stats row (4 boxes) ===== */
+  .gh-stats {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: var(--gh-space-4);
+    margin-bottom: var(--gh-space-6);
+  }
+  @media (max-width: 960px) {
+    .gh-stats { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 560px) {
+    .gh-stats { grid-template-columns: 1fr; }
+  }
+  
+  
+/* Stat card layout: two columns (left stack | right icon) */
+.gh-stat-row {
+    position: relative;
+    padding-right: 72px;             /* reserve space for right icon */
+    display: grid;
+    grid-template-rows: auto auto;
+    background: #ffffff;
+    border: 1px solid #e7edf5;
+    border-radius: 12px;
+    box-shadow: 0 1px 2px rgba(16, 24, 40, 0.06);
+    padding: 18px 20px;
+    /* display: grid; */
+    /* grid-template-columns: 1fr auto;  */
+    align-items: center;
+    column-gap: 16px;
+    height:110px;
+  }
+  
+  /* Left stack: label first, then value */
+  /* .gh-stat-left {
+    display: grid;
+    grid-template-rows: auto auto; 
+    row-gap: 6px;
+  } */
+  
+  /* Label on top (muted) */
+  .gh-stat-label {
+    font-size: 14px;
+    color: #6b7280;
+    margin: 0;
+  }
+  
+  /* Value below (bold) */
+  .gh-stat-value {
+    font-size: 28px;
+    font-weight: 800;
+    color: #0f172a;
+    line-height: 1.1;
+    margin: 0;
+  }
+  
+  /* Icon on the right */
+  /* .gh-stat-icon {
+    width: 44px;
+    height: 44px;
+    display: grid;
+    place-items: center;
+    border-radius: 999px;
+    background: #e6f6ff;      
+    border: 1px solid #dbe7ff;
+    color: #2563eb;
+  } */
+  
+  /* Normalize icon size */
+  .gh-stat-icon .MuiSvgIcon-root {
+    font-size: 22px;
+  }
+
+  
+
+  .gh-stat-left { display: contents; } /* lets children flow into parent grid rows */
+  
+  .gh-stat-label { grid-row: 1; }
+  .gh-stat-value { grid-row: 2; }
+  
+  .gh-stat-icon {
+    position: absolute;
+    right: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 44px;
+    height: 44px;
+    display: grid;
+    place-items: center;
+    border-radius: 999px;
+    background: #e6f6ff;
+    border: 1px solid #dbe7ff;
+    color: #2563eb;
+  }
+  .gh-stat-icon .MuiSvgIcon-root { font-size: 22px; }
+  
+  
+  
+  /* ===== Section titles ===== */
+  .gh-section-title {
+    margin: 0 0 var(--gh-space-3);
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--gh-text-strong);
+  }
+  
+  
+.gh-qa .gh-section-title {
+    margin: 0 0 16px 4px;                  /* slight left indent, space below */
+    font-size: 18px;
+    font-weight: 700;
+    color: #0f172a;
+  }
+  
+  /* ===== Quick actions row ===== */
+  
+.gh-qa {
+    background: #ffffff;
+    border: 1px solid #e7edf5;            /* soft container border */
+    border-radius: 16px;                   /* rounded container */
+    box-shadow: 0 1px 2px rgba(16, 24, 40, 0.06);
+    padding: 20px;                         /* inner padding around title + tiles */
+    margin-bottom: 24px;
+  }
+  
+  
+.gh-qa-row {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 20px;                             /* equal horizontal & vertical spacing */
+  }
+  
+ 
+@media (max-width: 960px) {
+    .gh-qa-row { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 560px) {
+    .gh-qa-row { grid-template-columns: 1fr; }
+  }
+  
+  
+  
+
+  .gh-qa-tile {
+    border: 1px solid #e7edf5;
+    border-radius: 12px;
+    background: #ffffff;
+    height: 92px;
+    padding: 16px 12px;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    transition: background 0.2s ease, box-shadow 0.2s ease, transform 0.06s ease, color 0.2s ease;
+  }
+  
+  
+
+  .gh-qa-tile:hover {
+    background: #fbfdff;                  /* very light tint */
+    box-shadow: 0 2px 8px rgba(16,24,40,0.06);
+    transform: translateY(-1px);
+  }
+  
+  
+.gh-qa-tile:hover .gh-qa-text,
+.gh-qa-tile:hover .MuiSvgIcon-root,
+.gh-qa-tile:hover .gh-qa-icon {
+  color: #0f172a !important;            /* force dark for visibility */
+}
+
+  
+  /* Disabled variant (if you ever use it) */
+  .gh-qa-tile--disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  
+  
+.gh-qa-content {
+    display: grid;
+    justify-items: center;
+    gap: 10px;                              /* space between icon and text */
+  }
+  
+  /* Icon style (MUI icons or text '+') */
+  .gh-qa-icon,
+  .gh-qa-content .MuiSvgIcon-root {
+    color: #0f172a;                         /* dark icon like screenshot */
+    font-size: 22px;                        /* consistent size */
+    line-height: 1;
+  }
+  
+  
+.gh-qa-text {
+    font-size: 14px;
+    font-weight: 700;                       /* bold label */
+    color: #0f172a;
+  }
+  
+  
+  /* ===== In Progress/Draft list ===== */
+  .gh-list {
+    margin-bottom: var(--gh-space-6);
+  }
+  .gh-list-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--gh-space-4);
+  }
+  @media (max-width: 960px) {
+    .gh-list-grid { grid-template-columns: 1fr; }
+  }
+  
+  /* Draft item card (AdaptCard) */
+  .adapt-card {
+    background: var(--gh-surface);
+    border: 1px solid var(--gh-border);
+    border-radius: var(--gh-radius);
+    box-shadow: var(--gh-shadow-1);
+    padding: var(--gh-space-5);
+    display: grid;
+    gap: 8px;
+  }
+  
+  /* Top row: title + right chip */
+  .adapt-card__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .adapt-card__title {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--gh-text-strong);
+    display: -webkit-box;
+    -webkit-line-clamp: 1; /* same screenshot behavior */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  
+  /* Right status chip (Draft) */
+  .adapt-card__chip {
+    display: inline-flex;
+    align-items: center;
+    height: 26px;
+    padding: 0 10px;
+    border-radius: 999px;
+    background: var(--gh-success-50); /* soft green background */
+    color: var(--gh-success);
+    font-size: 12px;
+    font-weight: 700;
+    border: 1px solid #d1fadf;
+  }
+  
+  /* Meta row: like “Content · HIV/AIDS” */
+  .adapt-card__meta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--gh-text-muted);
+  }
+  .adapt-card__meta .dot { color: #cbd5e1; }
+  
+  /* ===== General tweaks ===== */
+  .glocal-hub .MuiSvgIcon-root {
+    font-size: 20px; /* unify icon size across tiles/stats */
+  }
+  
+  /* Button reset inside stat tiles/quick tiles to avoid ugly outlines */
+ 
+button.gh-qa-tile {
+    outline: none;
+  }
+  button.gh-qa-tile:focus-visible {
+    outline: 2px solid #93c5fd;
+    outline-offset: 3px;
+    border-radius: 12px;
+  }
+  
+  

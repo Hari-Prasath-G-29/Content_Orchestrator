@@ -1,0 +1,899 @@
+
+/* =============== Global Reset & Theme =============== */
+:root {
+    /* Colors */
+    --bg: #f7f8fa;
+    --surface: #ffffff;
+    --surface-soft: #f9fafb;
+  
+    --text-strong: #0f172a;   /* slate-900 */
+    --text: #1f2937;          /* slate-800 */
+    --text-muted: #6b7280;    /* slate-500 */
+  
+    --border: #e5e7eb;        /* gray-200 */
+    --border-soft: #eef0f3;
+  
+    --primary: #2563eb;       /* blue-600 */
+    --primary-50: #eff6ff;
+    --primary-600: #2563eb;
+  
+    --success: #16a34a;       /* green-600 */
+    --success-50: #ecfdf5;
+  
+    --pending: #ca8a04;       /* amber-600 */
+    --pending-50: #fffbeb;
+  
+    --error: #dc2626;         /* red-600 */
+    --error-50: #fef2f2;
+  
+    --chip-bg: #f3f4f6;       /* gray-100 */
+    --chip-text: #111827;     /* gray-900 */
+  
+    /* Shadows & Radii */
+    --shadow-1: 0 1px 2px rgba(16, 24, 40, 0.08);
+    --shadow-2: 0 4px 12px rgba(16, 24, 40, 0.08);
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+  
+    /* Spacing scale */
+    --space-1: 4px;
+    --space-2: 8px;
+    --space-3: 12px;
+    --space-4: 16px;
+    --space-5: 20px;
+    --space-6: 24px;
+    --space-8: 32px;
+  
+    /* Font */
+    --font: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans",
+             "Apple Color Emoji", "Segoe UI Emoji";
+  }
+  
+  /* Better default sizing */
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+  
+  html, body, #root {
+    height: 100%;
+    background: var(--bg);
+  }
+  
+  body {
+    margin: 0;
+    font-family: var(--font);
+    color: var(--text);
+  }
+  
+  /* =============== Page & Topbar =============== */
+  
+  .page {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: var(--space-6);
+  }
+  
+  .topbar {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    margin-bottom: var(--space-6);
+  }
+  
+  .topbar .title-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+  
+  .page-title {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    font-size: 22px;
+    line-height: 1.2;
+    color: var(--text-strong);
+    margin: 0;
+  }
+  
+  .subtitle {
+    margin: 0;
+    color: var(--text-muted);
+    font-size: 14px;
+  }
+  
+  /* MUI ghost button mimic (for the back arrow in topbar) */
+  button.MuiButton-root[variant="ghost"],
+  button.MuiButton-root.ghost {
+    border: none;
+    background: transparent;
+    padding: 8px;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  button.MuiButton-root[variant="ghost"]:hover,
+  button.MuiButton-root.ghost:hover {
+    background: var(--primary-50);
+  }
+  
+  /* =============== Panel (Discover Assets) =============== */
+  
+  
+.panel {
+    border-radius: 20px;           /* a bit rounder, matches screenshot */
+    border-color: #edf2f7;         /* lighter border */
+    background: #ffffff;
+    box-shadow: 0 1px 2px rgba(16, 24, 40, 0.06);
+  }
+  
+  
+  .panel-title {
+    font-size: 18px;
+    color: var(--text-strong);
+    margin: 0 0 var(--space-2);
+  }
+  
+  .panel-desc {
+    margin: 0 0 var(--space-5);
+    color: var(--text-muted);
+    font-size: 14px;
+  }
+  
+  /* =============== Search Row =============== */
+  
+  .search-row {
+    display: grid;
+    grid-template-columns: 1fr auto auto auto;
+    gap: var(--space-3);
+  }
+  
+  
+.search-input {
+    border-radius: 6px !important;          /* pill */
+    padding: 3px -1px;
+    /* background: #f4f6fb;           */
+    border-color: #e7ecf5;
+    /* --tw-ring-offset-color: hsl(var(--background)); */
+    /* border-color: black !important; */
+    border-width: 1px;
+    background-color: hsl(var(--background));
+  }
+  .search-input input::placeholder {
+    color: #9aa3af;
+  }
+  
+  .search-input  {
+    flex: 0 0 auto;
+  }
+
+  .search-icon {
+    position: absolute;
+    /* left: 10px; */
+    color: #8a8f98;
+    margin-top: 11px;
+    margin-left: 8px;
+}
+  .search-input input {
+    width: 100%;
+    /* border: none; */
+    background: transparent;
+    outline: none;
+    font-size: 15px;
+    color: var(--text);
+  }
+  
+ 
+.ghost-btn,
+.select {
+  border-radius: 6px;
+  padding: 8px 12px;
+  background: #fff;
+  border-color: #e7ecf5;
+  font-size: 0.875rem;
+}
+
+  .ghost-btn:hover {
+    background: #f3f6fb;
+  }
+  
+  /* .select {
+    border: 1px solid var(--border);
+    background: var(--surface-soft);
+    color: var(--text);
+    border-radius: var(--radius-md);
+    padding: 10px 12px;
+    font-size: 14px;
+  } */
+  
+  /* =============== Tabs Bar (Pills) =============== */
+  
+  
+.tabs-bar {
+    margin-top: 14px;
+    margin-bottom: 18px;
+  }
+  .tabs {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* evenly spaced across width */
+    gap: 8px;
+    background: #eef2f7;          /* soft container */
+    border: 1px solid #e7ecf5;
+    /* border-radius: 10px; */
+    border-radius: calc(var(--radius) - 2px);
+    padding: -6px;
+  }
+  .tab {
+    justify-content: center;
+    padding: 8px 12px;
+    background: transparent;
+    border: none;
+    color: #334155;
+    border-radius: 8px;
+  }
+  .tab.is-active {
+    background: #fff;
+    color: #020817;
+    border: 1px solid #dbe7ff;
+  }
+  .tab .tab-count {
+    color: #94a3b8;               /* softer count tone */
+    font-weight: 600;
+  }
+  
+  .tab .tab-label {
+    font-weight: 600;
+    font-size: 0.875rem;
+  }
+  /* .tab .tab-count {
+    color: var(--text-muted);
+  } */
+  
+  /* =============== Cards Grid =============== */
+  
+ 
+.page {
+    max-width: 1210px;           /* slightly narrower like the screenshot */
+  }
+  
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr)); /* keep three columns */
+    gap: 1rem;                    /* row gap == column gap */
+    align-items: stretch;         /* stretch children to equal height */
+  }
+  
+  
+/* Responsiveness kept intact */
+@media (max-width: 1080px) {
+  .grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 720px) {
+  .grid { grid-template-columns: 1fr; }
+}
+
+  
+
+.card-btn {
+    display: block;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    background: transparent;
+    border: none;
+    text-align: left;
+    cursor: pointer;
+  }
+  
+  
+  
+ 
+
+ 
+.card {
+    height: 100%;
+    display: grid;
+    grid-template-rows: auto auto 1fr auto; /* header, subtitle, spacer, footer */
+    gap: 8px;
+    background: #ffffff;
+    border: 1px solid #e7edf5;
+    border-radius: 16px;
+    padding: 16px 18px;
+    box-shadow: 0 1px 2px rgba(16,24,40,0.06);
+    transition: box-shadow 0.2s ease, transform 0.06s ease;
+    min-height: 168px;                            /* keeps rows uniform */
+  }
+  
+ 
+@media (min-width: 1290px) { .card { min-height: 100px !important; } }
+.card:hover { box-shadow: 0 4px 12px rgba(16,24,40,0.08); transform: translateY(-1px); }
+
+  
+  
+
+.card-title {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-strong);
+    display: -webkit-box;
+    -webkit-line-clamp: 1;                        /* single line like reference */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  
+  
+  
+  
+.card-subtitle {
+    margin: 0;
+    font-size: 13px;
+    color: #8fa2b0;                                /* soft slate */
+    margin-top: -17px;
+    margin-left: 15px;
+  }
+  
+  
+  
+.card-footer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;                /* two columns */
+    align-items: center;
+    margin-top: 4px;
+    background-color: white;
+  }
+  
+  
+  /* .card:hover {
+    box-shadow: var(--shadow-2);
+    transform: translateY(-1px);
+  } */
+  
+  /* Header row: title + right-aligned type tag */
+  
+
+  .card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: white;
+  }
+  
+  
+  /* .card-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-strong);
+    margin: 0;
+  } */
+ 
+
+  .right-type {
+    display: inline-flex;
+    align-items: center;
+    height: 28px;
+    padding: 0 12px;
+    border-radius: 999px;
+    background: #2bb29c;                          /* teal-green */
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 700;
+    border: none;
+  }
+  
+  
+  
+  /* .card-subtitle {
+    margin: 0;
+    color: var(--text-muted);
+    font-size: 13px;
+  }
+   */
+  .extra {
+    display: grid;
+    gap: 8px;
+  }
+  .extra-row {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 10px;
+    align-items: center;
+  }
+  .extra-label {
+    color: var(--text-muted);
+    font-size: 12px;
+  }
+  .extra-value {
+    color: var(--text);
+    font-size: 13px;
+  }
+  
+  /* .card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: var(--space-2);
+  } */
+  
+ 
+.chips-left {
+    display: flex;
+    gap: 8px;
+    justify-content: flex-start;                   /* left-aligned chip */
+  }
+  
+  
+  /* =============== Chips (general) =============== */
+  
+
+  
+.chip {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 12px;
+    border-radius: 999px;
+    background: #ffffff;                           /* white interior */
+    color: #0f172a;
+    border: 1px solid #e6ebf2;                     /* subtle outline */
+    font-size: 12px;
+    font-weight: 600;
+    box-shadow: 0 1px 0 rgba(16,24,40,0.03);
+  }
+  
+  
+  
+.card-footer .chip:last-child {
+    justify-self: end;                             /* push “approved” to right */
+  }
+  
+  /* Card list tone classes */
+
+ 
+.chip.primary,
+.chip.success,
+.chip.muted {
+  background: #ffffff;
+  color: #0f172a;
+  border-color: #e6ebf2;
+}
+  
+.card, .card-btn { margin: 0; }
+  
+  /* =============== Empty, Loading, Error =============== */
+  
+  
+.empty, .error, .loading {
+    padding: 18px;
+    border-color: #edf2f7;
+    border-radius: 16px;
+  }
+  
+  .error strong {
+    display: block;
+    color: var(--error);
+    margin-bottom: 6px;
+  }
+  .spinner {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    border: 3px solid #dbeafe;
+    border-top-color: var(--primary);
+    margin: 0 auto var(--space-3);
+    animation: spin 0.8s linear infinite;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  
+  /* =============== Modal =============== */
+
+
+/* Backdrop covers the whole viewport and centers children */
+.modal-backdrop {
+  position: fixed !important;
+  inset: 0 !important;               /* top:0; right:0; bottom:0; left:0 */
+  height: 100vh !important;
+  width: 100vw !important;
+
+  /* Use flex to center */
+  display: flex !important;
+  align-items: center !important;     /* vertical center */
+  justify-content: center !important; /* horizontal center */
+
+  /* Dim background */
+  /* background: rgba(17, 24, 39, 0.55) !important; */
+  background: #353232cc !important;
+  backdrop-filter: blur(2px);
+  z-index: 10000 !important;          /* above anything else */
+  padding: 0 !important;              /* remove extra padding that can offset centering */
+}
+
+
+
+
+/* The modal box itself: constrained height and scroll INSIDE the box */
+.modal {
+  position: relative !important;      /* relative inside centered flex container */
+  max-width: 940px !important;
+  width: 100% !important;
+
+  /* Constrain to viewport; ensure it never exceeds the available height */
+  max-height: calc(100vh - 96px) !important; /* ~48px breathing space on top/bottom */
+  overflow: auto !important;          /* internal scrolling for long content */
+
+  /* Visual style */
+  background: #fff !important;
+  border: 1px solid #e7edf5 !important;
+  border-radius: 12px !important;
+  box-shadow: 0 12px 32px rgba(16,24,40,0.25) !important;
+  margin: 0 !important;               /* prevent accidental margins */
+}
+
+
+
+/* ===== Header ===== */
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px 20px;
+  border-bottom: 1px solid #eef2f7;
+}
+
+.modal-title-row {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.modal-title {
+  margin: 0;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #0f172a;
+  letter-spacing: -0.025em;
+  line-height: 1;
+  gap: 0.5rem;
+}
+
+.modal-subtitle {
+  margin: 4px 0 0;
+  color: #6b7280;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  margin-top: 1px;
+}
+
+.modal-close {
+  border: none;
+  background: transparent;
+  font-size: 18px;
+  cursor: pointer;
+  color: #0f172a;
+  padding: 6px;
+  border-radius: 8px;
+  margin-top: -30px;
+  margin-right: -14px;
+}
+.modal-close:hover {
+  background: #f8fafc;
+}
+
+/* ===== Body spacing ===== */
+.modal-body {
+  padding: 16px 20px;
+  display: grid;
+  gap: 12px;                                      /* tight stack like screenshot */
+}
+
+/* ===== Section cards (Asset Information, Strategic Context, etc.) ===== */
+.section-card {
+  background: #ffffff;                            /* white interior */
+  border: 1px solid #e7edf5;                      /* thin outline */
+  border-radius: 8px;
+  padding: 12px;
+}
+
+/* “Soft” variant uses lighter background + same border */
+.section-card.soft {
+  background: #fbfdff;                            /* very light tint */
+  border-color: #eef2f7;
+}
+
+/* Section titles and headers */
+.section-header {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+.section-title {
+  margin: 0;
+  font-weight: 600;
+  color: #0f172a;
+  letter-spacing: -0.025em;
+  font-size: 1.025rem;
+  line-height: 1.75rem;
+}
+
+/* ===== Info grid (two columns for Asset Information) ===== */
+.info-grid.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+@media (max-width: 640px) {
+  .info-grid.two-col { grid-template-columns: 1fr; }
+}
+
+.info-item { display: grid; gap: 6px; margin-top: 11px}
+.info-label { 
+  color: #6b7280;
+  font-size: 0.875rem;
+  line-height: 1.25rem; }  /* muted field labels */
+.info-value { font-size: 13px; color: #0f172a; font-weight: 600;
+  font-size: 0.875rem;
+  line-height: 1.25rem;}
+
+  .info-value1 {  color: #0f172a; 
+    font-size: 0.875rem;
+    line-height: 1.25rem}
+
+/* Chips used inside info items (e.g., Asset Type ‘email’) */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1px solid #e6e9ef;
+  background: #ffffff;
+  color: #0f172a;
+  /* font-size: 12px; */
+  font-weight: 600;
+  font-size: 0.85rem;
+    line-height: 1rem
+}
+.chip-soft {
+  background: #f1f5f9;                            /* soft gray pill */
+  border-color: #e2e8f0;
+}
+
+/* Friendly status chip tones for modal */
+.chip-approved { background: #eff6ff; color: #2563eb; border-color: #dbeafe; }
+.chip-success  { background: #ecfdf5; color: #16a34a; border-color: #d1fadf; }
+.chip-pending  { background: #fffbeb; color: #ca8a04; border-color: #fde68a; }
+.chip-error    { background: #fef2f2; color: #dc2626; border-color: #fecaca; }
+
+/* ===== Accordion (Strategic Context) look like checkbox section ===== */
+.accordion-btn {
+  width: 97%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border: 1px solid #e7edf5;
+  border-radius: 8px;
+  background: #ffffff;
+  cursor: pointer;
+}
+.accordion-btn:hover { background: #fbfdff; }
+
+.accordion-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 4px;                             /* checkbox-like square */
+  border: 1px solid #dbe7ff;
+  background: #ffffff;
+}
+.accordion-title {
+  /* font-size: 14px; */
+  font-weight: 600;
+  color: #0f172a;
+  font-size: 1.025rem;
+}
+.chev {
+  margin-left: auto;
+  transition: transform 0.2s ease;
+  color: #0f172a;
+}
+.chev.open { transform: rotate(180deg); }
+
+.context-content { margin-top: 10px; }
+
+/* ===== Content preview area ===== */
+.content-preview {
+  border: 1px solid #e7edf5;
+  border-radius: 8px;
+  background: #ffffff;
+  padding: 10px;
+}
+.content-pre {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.5;
+  color: #334155;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+.content-pre.muted { color: #1f2227; font-size: 0.875rem;
+  line-height: 1.25rem;}
+
+/* ===== Footer with ghost + primary buttons ===== */
+.modal-footer {
+  padding: 14px 20px;
+  border-top: 1px solid #eef2f7;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+.btn {
+  border: 1px solid #e7edf5;
+  background: #ffffff;
+  color: #0f172a;
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.btn.ghost:hover { background: #f8fafc; }
+.btn.primary {
+  background: #2563eb;
+  color: #ffffff;
+  border-color: #2563eb;
+}
+.btn.primary:hover { background: #1d4ed8; }
+
+/* ===== SVGs and icons inside modal ===== */
+.modal-header svg,
+.section-header svg {
+  color: #0f172a;
+}
+
+/* ===== Accessibility: focus ring ===== */
+button:focus-visible {
+  outline: 2px solid #93c5fd;
+  outline-offset: 2px;
+  border-radius: 8px;
+}
+
+  
+  
+  /* Utility */
+  .muted { color: var(--text-muted); }
+ 
+  
+/* Remove any internal separators inside cards */
+.card,
+.card * {
+  background-image: none !important;       /* kill any divider background images */
+}
+
+/* Specifically neutralize borders on common rows inside the card */
+.card-header,
+.card-subtitle,
+.card-footer,
+.card > .extra,
+.card > .chips-left {
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+/* If some library or global CSS adds top/bottom borders to children, strip them */
+.card > * {
+  border-top: none !important;
+  border-bottom: none !important;
+}
+
+/* Hide accidental <hr> elements used as separators (if any) */
+.card hr {
+  display: none !important;
+}
+
+/* Remove pseudo-element dividers that might be injected by other CSS */
+.card::before,
+.card::after,
+.card-header::before,
+.card-header::after,
+.card-footer::before,
+.card-footer::after {
+  content: none !important;
+  display: none !important;
+  border: none !important;
+}
+
+/* Ensure the subtitle and footer don’t introduce visual lines via subtle shadows */
+.card-subtitle {
+  box-shadow: none !important;
+}
+
+/* Keep the outer card border & look intact */
+.card {
+  border: 1px solid #e7edf5;              /* your soft outer border */
+  border-radius: 10px !important;
+  box-shadow: 0 1px 2px rgba(16,24,40,0.06);
+}
+
+/* Maintain the desired internal layout (no lines) */
+.card-header { margin-bottom: 6px; }
+.card-footer { margin-top: 4px; }
+
+
+/* Spinner should not stretch */
+.spinner {
+  flex: 0 0 auto;
+  width: 18px;
+  height: 18px;
+  border: 2px solid #c2c8d0;
+  border-top-color: #2563eb;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+
+
+
+
+
+
+
+/* ---- Cluster the spinner + text and center the cluster ---- */
+.loading {
+  /* make the container a centered row */
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 10px;
+
+  /* keep your existing box look */
+  grid-column: 1 / -1;
+  padding: 12px 14px;
+  border: 1px solid #e7edf5;
+  border-radius: 12px;
+  background: #fff;
+  color: #475467;
+
+  /* if any parent right-aligns text, stop it */
+  text-align: left !important;
+}
+
+/* spinner + label must not grow/shrink or push each other away */
+.loading .spinner,
+.loading span {
+  flex: 0 0 auto !important;
+}
+
+/* eliminate any auto margins that shove the label to the far right */
+.loading span {
+  margin: 0 !important;
+  white-space: nowrap;       /* keep the label on one line */
+}
+
+/* spinner visuals */
+.loading .spinner {
+  width: 18px;
+  height: 18px;
+  border: 2px solid #c2c8d0;
+  border-top-color: #2563eb;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin-top: 15px;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ---- Safety overrides in case a parent applies spacing ---- */
+/* Some grids/containers set space-between on children; neutralize it here */
+.grid .loading {
+  justify-content: center !important;
+}
+
+/* If a global rule is pushing children apart via auto margins, cancel them */
+.grid .loading > * {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
