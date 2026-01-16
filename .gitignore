@@ -1,0 +1,11 @@
+# Ignore heavy library folders
+node_modules/
+**/node_modules/
+
+# Ignore secret credential files (Very Important!)
+.env
+**/.env
+
+# Ignore Python temp files
+__pycache__/
+*.pyc

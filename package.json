@@ -1,0 +1,16 @@
+{
+  "name": "new",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "concurrently \"npm start --prefix Final_content\\Content_Orchestator\" \"uvicorn Final_Veeva.main:app --port 8000\" \"uvicorn server.main:app --port 5000\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  }
+}
