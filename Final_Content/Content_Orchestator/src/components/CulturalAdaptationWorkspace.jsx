@@ -895,6 +895,13 @@ setSegOverrides((prev) => ({
         status: "Reviewed",
       },
     }));
+
+    navigate("/regulatoryCompliance",{
+      state: {projectName, 
+        segments: segments.map(s=>({...s,...(segOverrides[s.id] || {}),
+      })),
+     },
+    });
 };
 
   const handleAnalyzeClick = async () => {
@@ -1401,11 +1408,20 @@ className="tm-phase-text">
     </div>
     {/* 3-Button Footer Logic */}
     <div className="tm-visual-footer">
-          <button className="tm-btn outline" onClick={() => setIsAnalysisOpen(false)}>Close</button>
+          <button className="tm-btn outline" onClick={() => {
+            setAnalysisBySegment(prev=>{
+              const next={...prev};
+              delete next[selectedResolved.id];
+              return next;
+            });
+           setIsAnalysisOpen(false);
+          }}>Close</button>
           <button className="tm-btn outline" onClick={handleAnalyzeClick}>Re-analyze</button>
           <button className="tm-btn primary" onClick={handleMarkReviewed}>Mark as Reviewed & Continue</button>
         </div>
       </div>
+    </div>
+
     </div>
 
             {/* Right Column: Context Editor */}
@@ -1442,7 +1458,6 @@ className="tm-phase-text">
                 </div>
               )}
               </div>
-            </div>
           </section>
         )}
         
